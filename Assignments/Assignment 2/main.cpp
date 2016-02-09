@@ -11,18 +11,18 @@ int main() {
 	}
 	std::multiset<int> numberSet{inputList.begin(), inputList.end()};
 
-	auto lowerBound = numberSet.find(-5);
-	auto upperBound = numberSet.find(5);
+	auto lowerBound = std::find(numberSet.begin(), numberSet.end(), -5);
+	auto upperBound = std::find(lowerBound, numberSet.end(), 5);
 	std::cout << "The values between -5 and 5 inclusively are:" << std::endl;
-	for (auto it = lowerBound; it != upperBound && it != numberSet.end(); ++it) {
+	for (auto it = lowerBound; it != upperBound; ++it) {
 		std::cout << *it << " ";
 	}
 	std::cout << std::endl;
 
-	lowerBound = numberSet.lower_bound(-5);
-	upperBound = numberSet.upper_bound(5);
+	lowerBound = std::lower_bound(numberSet.begin(), numberSet.end(), -5);
+	upperBound = std::upper_bound(lowerBound, numberSet.end(), 5);
 	std::cout << "The values between -5 and 5 inclusively are:" << std::endl;
-	for (auto it = lowerBound; it != upperBound && it != numberSet.end(); ++it) {
+	for (auto it = lowerBound; it != upperBound; ++it) {
 		std::cout << *it << " ";
 	}
 	std::cout << std::endl;
